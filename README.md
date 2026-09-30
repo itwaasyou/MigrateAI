@@ -74,6 +74,10 @@ Upload the ZIP. After analysis finishes, review the detected current stack, choo
 
 The target picker groups suggested options by runtime, framework, web framework, data store, and platform. Suggestions come from the selected current stack and are starting points, not automatic compatibility guarantees. You can select multiple technologies or add a custom target.
 
+## Deploy with Vercel
+
+Deploy `apps/web` to Vercel. The current FastAPI API needs a persistent Python service, PostgreSQL, Redis, and a persistent disk for uploaded repositories, so it runs separately. Follow [the Vercel deployment guide](docs/deployment.md) for the exact settings and steps.
+
 ## Configuration
 
 | Variable | Purpose | Default |

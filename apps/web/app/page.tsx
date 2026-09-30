@@ -3,7 +3,7 @@
 import { ChangeEvent, FormEvent, useCallback, useEffect, useState } from "react";
 import { ArrowRight, Bot, Check, FileArchive, House, LoaderCircle, LogOut, MessageCircle, Plus, Send, Sparkles, Workflow, X } from "lucide-react";
 
-const API = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+const API = (process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000").replace(/\/+$/, "");
 type UserState = { id: string; email: string; workspaces: { id: string; name: string; role: string }[] };
 type Analysis = { id: string; status: string; stage: string; repository_name: string; repository_id: string; result?: Result | null; error?: string | null; current_stack?: string[]; target_stack?: string[] };
 type Result = { status: string; repository_name: string; file_count: number; parsed_file_count: number; unsupported_file_count: number; languages: Record<string, number>; technologies: string[]; architecture_hints: string[]; warnings: string[]; dependencies: { source: string; target: string; kind: string; evidence: { file: string; start_line: number; end_line: number; detail: string } }[]; database_access: { file: string; start_line: number; detail: string }[]; api_routes: { file: string; start_line: number; detail: string }[]; risks: { name: string; score: number; detail: string; evidence: { file: string; start_line: number; end_line: number; detail: string }[] }[] };
