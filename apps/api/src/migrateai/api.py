@@ -267,7 +267,7 @@ def _session_cookie(response: Response, user_id: str, db: Session) -> None:
         create_session(user_id, db),
         httponly=True,
         secure=os.getenv("COOKIE_SECURE", "false").lower() == "true",
-        samesite="lax",
+        samesite=os.getenv("COOKIE_SAMESITE", "lax").lower(),
         max_age=8 * 3600,
         path="/",
     )
@@ -335,6 +335,7 @@ def logout(request: Request, response: Response, db: Session = Depends(get_db)):
             db.delete(session)
             db.commit()
     response.delete_cookie("migrateai_session", path="/")
+    response.status_code = 204
     return response
 
 
