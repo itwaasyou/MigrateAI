@@ -1,0 +1,1 @@
+{"name":"acme-legacy-monolith","private":true,"version":"1.4.0","dependencies":{"express":"^4.18.0","mongoose":"^8.0.0","jsonwebtoken":"^9.0.0","axios":"^1.7.0"},"devDependencies":{"jest":"^29.0.0","typescript":"^5.6.0"}}

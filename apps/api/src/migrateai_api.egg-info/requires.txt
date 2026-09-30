@@ -1,0 +1,16 @@
+fastapi<1,>=0.115
+uvicorn[standard]<1,>=0.30
+python-multipart<1,>=0.0.9
+SQLAlchemy<3,>=2.0
+psycopg[binary]<4,>=3.2
+alembic<2,>=1.14
+redis<6,>=5
+python-dotenv<2,>=1
+pwdlib[argon2]<1,>=0.2
+email-validator<3,>=2.2
+httpx<1,>=0.27
+
+[dev]
+pytest<9,>=8
+httpx<1,>=0.27
+ruff<1,>=0.9
