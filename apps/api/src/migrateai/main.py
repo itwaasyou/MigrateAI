@@ -14,6 +14,13 @@ logging.basicConfig(
     format="%(asctime)s %(levelname)s %(name)s %(message)s",
 )
 logger = logging.getLogger("migrateai.api")
+web_origins = [
+    origin.strip()
+    for origin in os.getenv(
+        "WEB_ORIGINS", os.getenv("WEB_ORIGIN", "http://localhost:3000")
+    ).split(",")
+    if origin.strip()
+]
 app = FastAPI(
     title="MigrateAI API",
     version="0.2.0",
@@ -21,7 +28,8 @@ app = FastAPI(
 )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[os.getenv("WEB_ORIGIN", "http://localhost:3000")],
+    allow_origins=web_origins,
+    allow_origin_regex=os.getenv("WEB_ORIGIN_REGEX") or None,
     allow_credentials=True,
     allow_methods=["GET", "POST", "PUT", "PATCH", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization", "X-Request-ID"],
